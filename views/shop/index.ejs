@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+
+        <% if (hasProducts) { %>
+        <div class="container">
+            <div class="row">
+            <% for (let product of products) { %>
+               <div class="col-md-6 col-lg-4">
+                   <!-- Card -->
+<div class="card">
+
+  <!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top" src="<%= product.imageUrl%>" alt="<%= product.title%>">
+    <a href="/products/<%= product.id %>">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= product.title%></h4>
+    <div class="text-center">
+    <p class="card-text"><%= product.price%>$</p>
+    <hr>
+    <h6 class=""><%= product.description%></h6>
+    </div>
+    <div class="text-center">
+    <%- include('../includes/add-to-card.ejs', {product: product})%>
+    </div>
+  </div>
+
+</div>
+               </div>
+            <% } %>
+            
+            <% } else { %> 
+            <h1 class="main-title">No products added yet</h1>
+            <% } %>
+            </div>
+        </div>
+
+    </main>
+
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div>
+            <div class="card custom-login">
+                <h5 class="card-header default-color white-text text-center py-4">Sign in</h5>
+                <div class="card-body px-lg-5 pt-0">
+                    <form method="POST" action="/login" class="text-center p-5">
+                    <%if(errorMessage) {%>
+                      <label class="error"><%= errorMessage %></label>
+                    <%}%>
+          <!-- Email -->
+          <input type="email" name="email" placeholder="E-mail" class="form-control mb-4"> 
+
+          <!-- Password -->
+          <input type="password" name="password" placeholder="Password" class="form-control mb-4">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+          <div class="d-flex justify-content-around row">
+              <div class="col-sm-6">
+                  <!-- Remeber me -->
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="remeber-me">
+                    <label for="remeber-me" class="custom-control-label custom-login-label">Remeber me</label>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- Forgot password -->
+                <a href="/forgot-password">Forgot Password</a>
+              </div>
+          </div> 
+          <!--Sign in button -->
+          <button class="btn btn-default btn-block my-4" type="submit">Sign in</button>
+
+          <!-- Register -->
+          <p>
+            Not a member? 
+            <a href="/signup">Register</a>
+          </p>
+          
+        </form>
+                </div>
+             </div>
+       </div>
+    </main>
+
+<%- include('../includes/end.ejs') %>

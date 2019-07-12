@@ -1,0 +1,5 @@
+<form action="/delete-from-cart" method="POST">
+    <input type="hidden" name="productId" value="<%= product.id %>">
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+    <button type="submit" class="btn btn-danger" style="height:46px;padding-left:30px;padding-right:30px;"><i class="fas fa-trash-alt"></i>  Delete</button>
+</form>

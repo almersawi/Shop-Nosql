@@ -1,0 +1,51 @@
+
+    <nav class="navbar navbar-expand-lg navbar-dark default-color">
+        <a class="navbar-brand" href="/">Best Node Shop</a>
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item <%= path === 'shop' ? 'active' : '' %>">
+                <a href="/" class="nav-link">Shop</a>
+            </li>
+            <li class="nav-item <%= path === 'products' ? 'active' : '' %>">
+                <a href="/products" class="nav-link">Products</a>
+            </li>
+            <% if (isAuthenticated) { %>
+            <li class="nav-item <%= path === 'cart' ? 'active' : '' %>">
+                <a href="/cart" class="nav-link">Cart</a>
+            </li>
+            <li class="nav-item <%= path === 'orders' ? 'active' : '' %>">
+                <a href="/orders" class="nav-link">Orders</a>
+            </li>
+             <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">Admin</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                 <a href="/admin/products" class="nav-link dark-grey-text">Admin Products</a>
+                 <a href="/admin/add-product" class="nav-link dark-grey-text">Add Product</a>
+         </div>
+         <%}%>
+        </ul>
+        <ul class="nav navbar-nav nav-flex-icon ml-auto">
+        <% if (!isAuthenticated) { %>
+            <li class="nav-item <%= path === 'login'? 'active' : ''%>">
+                <a href="/login" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item <%= path === 'signup'? 'active' : ''%>">
+                <a href="/signup" class="nav-link">Sign up</a>
+            </li>
+            <%}%>
+            <% if (isAuthenticated) { %>
+            <li class="nav-item <%= path === 'logout'? 'active' : ''%>">
+                <a href="/logout" class="nav-link">logout</a>
+            </li>
+            <%}%>
+        </ul>
+        
+        </div>
+    </nav>

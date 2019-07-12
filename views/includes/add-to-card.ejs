@@ -1,0 +1,9 @@
+<% if (isAuthenticated) { %>
+<form action="/add-to-card" method="POST">
+    <button class="btn btn-primary" type="submit"><i class="fas fa-cart-plus"></i>  Add to cart</button>
+    <input type="hidden" name="productId" value="<%= product.id %>">
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+</form>
+<% } else { %>
+<label class="login-note">Login to be able to add this product to your cart</label>
+<% } %>

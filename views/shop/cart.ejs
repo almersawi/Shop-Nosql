@@ -1,0 +1,39 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div class="container">
+       <main>
+
+        <% if (hasProducts) { %>
+            <h2 class="main-title">My Cart</h2>
+           <div class="row">
+               <% for (let product of products) { %>
+               <div class="col-md-6 col-lg-4 col-sm-12">
+                <div class="card">
+                  <h6 class="card-header">
+                    <%= product.productId.title %>
+                  </h6>
+                  <div class="card-body text-center">
+                    <p class="card-text">Product quantity: <%= product.quantity %></p>
+                    <p class="card-text">Product price: <%= product.productId.price * product.quantity%></p>
+                     <%- include('../includes/delete-product.ejs', {product: product})%>
+                  </div>
+                </div>
+               </div>
+            <% } %>
+           </div>
+            <hr>
+            <form action="/create-order" method="POST" style="float: right">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-success" type="submit"><i class="fas fa-dollar-sign"></i>  Order now</button>
+            </form>
+        <% } else { %> 
+            <h1 class="main-title">No products in your cart</h1>
+        <% } %>
+        
+    </main>
+    </div>
+
+<%- include('../includes/end.ejs') %>
